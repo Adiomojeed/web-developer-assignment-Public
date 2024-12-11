@@ -19,7 +19,7 @@ const config: Config = {
         }
       },
       boxShadow: {
-        sm: "0px 2px 4px -2px rgba(10, 13, 18, 0.6), 0px 8px 4px -2px rgba(10, 13, 18, 0.1)",
+        sm: "0px 2px 4px -4px rgba(10, 13, 18, 0.6), 0px 8px 4px -2px rgba(10, 13, 18, 0.1)",
       },
     },
   },

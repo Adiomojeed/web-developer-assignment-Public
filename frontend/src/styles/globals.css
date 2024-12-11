@@ -28,6 +28,7 @@
 
 body {
   color: #535862 !important;
+  font-weight: 300;
 }
 
 @layer utilities {
@@ -42,7 +43,7 @@ body {
   }
 
   .container {
-    @apply w-full !max-w-[856px] mx-auto px-4 md:px-5 py-4 md:py-6 lg:py-20;
+    @apply w-full !max-w-[856px] mx-auto px-4 md:px-5 py-4 md:py-6 lg:py-20 pb-10;
   }
 
   th,
@@ -87,6 +88,7 @@ textarea {
 button {
   outline: none;
   border: none;
+  font-weight: 500;
 }
 
 input {
