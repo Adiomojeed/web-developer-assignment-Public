@@ -5,34 +5,19 @@ const Button = ({
   className,
   type,
   onClick,
-  size = "md",
-  btnType = "main",
+ 
   isLoading,
 }: {
   children: string | ReactNode;
   className?: string;
   type?: "submit" | "button";
   onClick?: (e: any) => void;
-  size?: "md" | "lg" | "sm";
-  btnType?: "main" | "light";
   isLoading?: boolean;
 }) => {
   return (
     <button
       type={type}
-      className={`${
-        btnType === "main"
-          ? "text-white bg-accent-500"
-          : "text-accent-500 bg-[#FFEEEB]"
-      } focus:ring-4 focus:ring-blue300 font-semibold rounded-[6px] ${
-        size === "sm"
-          ? `h-[42px]`
-          : size === "md"
-          ? `h-[48px]`
-          : size === "lg"
-          ? `h-[50px] md:h-[56px]`
-          : ""
-      } flex items-center justify-center text-base md:text-lg px-5 whitespace-nowrap ${className}`}
+      className={`rounded-[4px] font-normal h-[40px] text-sm px-4 bg-gray-700 text-white ${className}`}
       onClick={onClick}
     >
       {isLoading ? (

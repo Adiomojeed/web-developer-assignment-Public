@@ -1,5 +1,3 @@
-import React from "react";
-
 const TextArea = ({
   label,
   placeholder = "",
@@ -20,13 +18,13 @@ const TextArea = ({
   return (
     <div className="">
       {label && (
-        <label htmlFor={id} className="block mb-2 text-dark-500">
+        <label htmlFor={id} className="block mb-[10px] font-normal md:text-md">
           {label}
         </label>
       )}
       <textarea
         id={id}
-        className={`bg-white border border-gray-300 text-dark-500 focus:outline-none focus:ring-primary focus:border-blue-500  text-sm rounded-[6px] block w-full h-[56px] p-4 min-h-[120px] ${className}`}
+        className={`bg-white border border-[#94A3B8] text-dark-900 focus:outline-none focus:border-gray-700 text-sm rounded-[4px] block w-full min-h-[179px] p-[10px] ${className}`}
         placeholder={placeholder}
         required={required}
         value={value}

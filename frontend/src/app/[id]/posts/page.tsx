@@ -1,5 +1,6 @@
 "use client";
 
+import AddPostCard from "@/components/AddPostCard";
 import PostCard from "@/components/PostCard";
 import { useRouter } from "next/navigation";
 
@@ -22,11 +23,7 @@ const Page = () => {
         <span className="font-normal">4 Posts</span>
       </small>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-        <button className="h-[230px] md:h-[293px] rounded-lg border border-dashed border-[#D5D7DA] flex-center flex-col gap-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/add.svg" alt="" />
-          <small className="text-md">New Post</small>
-        </button>
+        <AddPostCard />
         {Array.from({ length: 5 }).map((i, idx) => (
           <PostCard key={idx} />
         ))}

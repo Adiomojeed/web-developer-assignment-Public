@@ -1,3 +1,6 @@
+import { UserData } from "@/api/types";
+import UserTableRow from "@/components/UserTableRow";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col container">
@@ -15,11 +18,7 @@ export default function Home() {
           </thead>
           <tbody>
             {Array.from({ length: 10 }).map((i, idx) => (
-              <tr key={idx}>
-                <td>James Sunderland</td>
-                <td>james.sunderland@acme.corp</td>
-                <td>11 Katz St., Pennsylvania, Centralia, M4A2T6 11 Katz St., Pennsylvania, Centralia, M4A2T6 </td>
-              </tr>
+              <UserTableRow user={{} as UserData} key={idx} />
             ))}
           </tbody>
         </table>

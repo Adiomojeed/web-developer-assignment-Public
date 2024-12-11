@@ -16,7 +16,8 @@ const config: Config = {
         accent: {
           50: "#F9F5FF",
           500: "#7F56D9"
-        }
+        },
+        "gray-700": "#334155"
       },
       boxShadow: {
         sm: "0px 2px 4px -4px rgba(10, 13, 18, 0.6), 0px 8px 4px -2px rgba(10, 13, 18, 0.1)",
