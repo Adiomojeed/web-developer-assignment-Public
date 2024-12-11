@@ -1,19 +1,54 @@
+"use client";
+
+import { useState } from "react";
+import BtnOutline from "./BtnOutline";
+import Button from "./Button";
+
 const PostCard = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="h-[230px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
-      <button className="absolute p-2 flex-center right-2 top-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/trash.svg" alt="" />
-      </button>
-      <h6 className="text-lg font-medium">I Got a Letter</h6>
-      <small className="text-sm mt-2 md:mt-4 line-clamp-[8] md:line-clamp-[10] text-ellipsis">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dol...
-      </small>
-    </div>
+    <>
+      <div className="h-[230px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="absolute p-2 flex-center right-2 top-2"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/trash.svg" alt="" />
+        </button>
+        <h6 className="text-lg font-medium">I Got a Letter</h6>
+        <small className="text-sm mt-2 md:mt-4 line-clamp-[8] md:line-clamp-[10] text-ellipsis">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dol...
+        </small>
+      </div>
+      {isOpen && (
+        <div
+          id="default-modal"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="overflow-y-auto p-5 overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex-center w-full md:inset-0 h-[calc(100%-1rem)] md:h-screen max-h-full bg-dark-500 bg-opacity-60"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative p-5 md:p-6  w-full max-w-[330px] max-h-full bg-white rounded-lg shadow flex flex-col gap-6"
+          >
+            <h5 className="text-xl text-dark-700 text-center leading-[1.2em] font-medium">
+              Are you sure to delete?
+            </h5>
+
+            <div className="flex-center gap-2">
+              <BtnOutline className="px-6" onClick={() => setIsOpen(false)}>No</BtnOutline>
+              <Button className="px-6">Yes</Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
