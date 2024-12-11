@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.h-screen {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.max-h-screen {
+  max-height: 100vh;
+  max-height: calc(var(--vh, 1vh) * 100);
+}
+
+body {
+  color: #333333 !important;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .container {
+    @apply w-full !max-w-[856px] mx-auto px-4 md:px-5 py-4 md:py-6 lg:py-20;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+input {
+  outline: none;
+}
+
+.Toastify__toast-container {
+  width: auto !important;
+}
+
+.Toastify__toast {
+  /* font-family: "Inter" !important; */
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0px !important;
+  right: -5px;
+}
+
+.Toastify__toast-body {
+  background: transparent;
+  padding: 0;
+}
