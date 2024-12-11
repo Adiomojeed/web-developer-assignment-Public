@@ -4,7 +4,7 @@ import "@styles/globals.css";
 import ParentProvider from "./Provider";
 import dynamic from "next/dynamic";
 
-const inter = Inter({ weight: ["400", "500"], subsets: ["latin"] });
+const inter = Inter({  subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lema AI",

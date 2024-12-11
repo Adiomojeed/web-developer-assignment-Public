@@ -27,7 +27,7 @@
 }
 
 body {
-  color: #333333 !important;
+  color: #535862 !important;
 }
 
 @layer utilities {
@@ -43,6 +43,40 @@ body {
 
   .container {
     @apply w-full !max-w-[856px] mx-auto px-4 md:px-5 py-4 md:py-6 lg:py-20;
+  }
+
+  th,
+  td {
+    @apply font-medium text-left px-2 py-3 md:py-4;
+  }
+
+  th:first-child,
+  td:first-child {
+    @apply pl-4 md:px-6;
+  }
+
+  td {
+    @apply font-[300] py-4 md:py-6 max-[767.98px]:max-w-[120px] overflow-clip whitespace-nowrap text-ellipsis;
+  }
+
+  td:first-child {
+    @apply font-medium;
+  }
+
+  tr {
+    @apply border-b-[1.5px];
+  }
+
+  tr:last-child {
+    @apply border-none;
+  }
+
+  td:first-child, td:nth-child(2) {
+    @apply md:w-[260px] md:max-w-[260px];
+  }
+
+  td:last-child {
+    @apply min-[768px]:max-w-[370px] lg:w-[392px] lg:max-w-[392px];
   }
 }
 
