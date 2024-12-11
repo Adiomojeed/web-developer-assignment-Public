@@ -2,6 +2,7 @@
 
 import { UserData } from "@/api/types";
 import Loader, { LoaderContainer } from "@/components/Loader";
+import Pagination from "@/components/Pagination";
 import UserTableRow from "@/components/UserTableRow";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ export default function Home() {
           )}
         </table>
       </div>
+      <Pagination total={30} limit={4} />
     </main>
   );
 }
