@@ -2,5 +2,14 @@ export type UserData = {
   id?: string;
   name: string,
   email: string,
-  address: string,
+  street: string,
+  state: string,
+  city: string,
+  zipcode: string
+};
+
+export type PostData = {
+  id?: string;
+  title: string,
+  body: string,
 };

@@ -1,13 +1,19 @@
 "use client";
 
+import { useGetTotalUsers, useGetUsers } from "@/api";
 import { UserData } from "@/api/types";
-import Loader, { LoaderContainer } from "@/components/Loader";
+import { LoaderContainer } from "@/components/Loader";
 import Pagination from "@/components/Pagination";
 import UserTableRow from "@/components/UserTableRow";
 import { useState } from "react";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const limit = 10;
+  const [pageNumber, setPageNumber] = useState<number>(0);
+  const { isLoading, data } = useGetUsers({ pageNumber, pageSize: limit });
+  const { data: total } = useGetTotalUsers();
+  const users = data as unknown as UserData[];
+
   return (
     <main className="flex min-h-screen flex-col container">
       <h2 className="text-4xl lg:text-6xl text-dark-700 leading-[1.2em] font-medium">
@@ -23,19 +29,25 @@ export default function Home() {
             </tr>
           </thead>
           {isLoading ? (
-            <td colSpan={3}>
-              <LoaderContainer />
-            </td>
+            <tbody>
+              <td colSpan={3}>
+                <LoaderContainer />
+              </td>
+            </tbody>
           ) : (
             <tbody>
-              {Array.from({ length: 10 }).map((i, idx) => (
-                <UserTableRow user={{} as UserData} key={idx} />
+              {users?.map((i: UserData, idx: number) => (
+                <UserTableRow user={i} key={idx} />
               ))}
             </tbody>
           )}
         </table>
       </div>
-      <Pagination total={30} limit={4} />
+      <Pagination
+        total={total}
+        limit={limit}
+        setPageNumber={(e: number) => setPageNumber(e)}
+      />
     </main>
   );
 }

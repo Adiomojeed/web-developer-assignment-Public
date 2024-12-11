@@ -1,23 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({ total, limit }: { total: number; limit: number }) => {
-  const [itemOffset, setItemOffset] = useState(0);
-
-  const endOffset = itemOffset + limit;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-
+const Pagination = ({
+  total,
+  limit,
+  setPageNumber,
+}: {
+  total: number;
+  limit: number;
+  setPageNumber: (e: number) => void;
+}) => {
   const pageCount = Math.ceil(total / limit);
   const handlePageClick = (e: any) => {
-    const newOffset = (e.selected * limit) % total;
-    console.log(
-      `User requested page number ${e.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
+    setPageNumber(e.selected);
   };
+
   return (
     <>
       <ReactPaginate

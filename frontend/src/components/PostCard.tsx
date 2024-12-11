@@ -3,8 +3,9 @@
 import { useState } from "react";
 import BtnOutline from "./BtnOutline";
 import Button from "./Button";
+import { PostData } from "@/api/types";
 
-const PostCard = () => {
+const PostCard = ({ post }: { post: PostData }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <>
@@ -16,13 +17,9 @@ const PostCard = () => {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/trash.svg" alt="" />
         </button>
-        <h6 className="text-lg font-medium">I Got a Letter</h6>
+        <h6 className="text-lg font-medium line-clamp-1">{post.title}</h6>
         <small className="text-sm mt-2 md:mt-4 line-clamp-[8] md:line-clamp-[10] text-ellipsis">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dol...
+          {post.body}
         </small>
       </div>
       {isOpen && (
@@ -42,7 +39,9 @@ const PostCard = () => {
             </h5>
 
             <div className="flex-center gap-2">
-              <BtnOutline className="px-6" onClick={() => setIsOpen(false)}>No</BtnOutline>
+              <BtnOutline className="px-6" onClick={() => setIsOpen(false)}>
+                No
+              </BtnOutline>
               <Button className="px-6">Yes</Button>
             </div>
           </div>

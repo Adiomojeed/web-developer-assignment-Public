@@ -1,14 +1,20 @@
 "use client";
 
+import { useGetPosts } from "@/api";
+import { PostData } from "@/api/types";
 import AddPostCard from "@/components/AddPostCard";
 import { LoaderContainer } from "@/components/Loader";
 import PostCard from "@/components/PostCard";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useParams } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const { id } = useParams();
+
+  const { isLoading, data } = useGetPosts(id as string);
+  const posts = data as unknown as PostData[];
+  console.log(posts);
+
   return (
     <main className="flex min-h-screen flex-col container">
       <button
@@ -31,8 +37,8 @@ const Page = () => {
           </small>
           <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
             <AddPostCard />
-            {Array.from({ length: 5 }).map((i, idx) => (
-              <PostCard key={idx} />
+            {posts.map((i: PostData, idx: number) => (
+              <PostCard key={idx} post={i} />
             ))}
           </div>
         </>
