@@ -9,7 +9,7 @@ export type UserData = {
 };
 
 export type PostData = {
-  id?: string;
+  id: string;
   title: string,
   body: string,
 };

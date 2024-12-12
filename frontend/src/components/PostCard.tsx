@@ -4,9 +4,14 @@ import { useState } from "react";
 import BtnOutline from "./BtnOutline";
 import Button from "./Button";
 import { PostData } from "@/api/types";
+import { useQueryClient } from "@tanstack/react-query";
+import { useDeletePost } from "@/api";
 
 const PostCard = ({ post }: { post: PostData }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const queryClient = useQueryClient();
+  console.log(post)
+  const { isPending, mutate: deletePost } = useDeletePost();
   return (
     <>
       <div className="h-[230px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
@@ -42,7 +47,21 @@ const PostCard = ({ post }: { post: PostData }) => {
               <BtnOutline className="px-6" onClick={() => setIsOpen(false)}>
                 No
               </BtnOutline>
-              <Button className="px-6">Yes</Button>
+              <Button
+                onClick={() =>
+                  deletePost(post.id, {
+                    onSuccess: () => {
+                      // @ts-ignore
+                      queryClient.refetchQueries(["getPosts"]);
+                      setIsOpen(false);
+                    },
+                  })
+                }
+                className="px-6"
+                isLoading={isPending}
+              >
+                Yes
+              </Button>
             </div>
           </div>
         </div>

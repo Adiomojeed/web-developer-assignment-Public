@@ -4,7 +4,7 @@ const BtnOutline = ({
   children,
   className,
   onClick,
-  type,
+  type = "button",
   isLoading,
 }: {
   children: string | ReactNode;

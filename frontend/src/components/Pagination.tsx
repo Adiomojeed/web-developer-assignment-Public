@@ -27,7 +27,7 @@ const Pagination = ({
           </button>
         }
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={0}
         pageCount={pageCount}
         previousLabel={
           <button className="gap-2">

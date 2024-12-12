@@ -11,7 +11,13 @@ export const useGetUsers = ({ pageNumber, pageSize }: { pageNumber: number, page
     },
   });
 
-
+export const useGetSingleUser = (userId: string) =>
+  useQuery({
+    queryKey: ["getUser"],
+    queryFn: () => {
+      return Request.get(`/users/${userId}`).then(res => res)
+    },
+  });
 
 export const useGetTotalUsers = () =>
   useQuery({
@@ -30,3 +36,28 @@ export const useGetPosts = (userId: string) =>
       return Request.get(`/posts?userId=${userId}`).then(res => res)
     },
   });
+
+export const useCreatePost = () => {
+  return useMutation({
+    mutationFn: (values: {
+      title: string,
+      body: string,
+      user_id: string,
+    }) =>
+      Request.post(`/posts`, values),
+    onSuccess: async (data: any) => {
+      customToast(data.message, ToastType.success)
+    }
+  })
+};
+
+export const useDeletePost = () => {
+  return useMutation({
+    mutationFn: (postId: string) =>
+      Request.delete(`/posts/${postId}`),
+    onSuccess: async (data: any) => {
+      console.log(data)
+      customToast(data.message, ToastType.success)
+    }
+  })
+};

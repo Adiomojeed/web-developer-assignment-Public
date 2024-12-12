@@ -4,7 +4,7 @@ import Loader from "./Loader";
 const Button = ({
   children,
   className,
-  type,
+  type = "button",
   onClick,
   isLoading,
 }: {

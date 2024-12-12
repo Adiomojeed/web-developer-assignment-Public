@@ -2,6 +2,7 @@ import { connection } from "../connection";
 
 import {
   selectCountOfUsersTemplate,
+  selectSingleUserTemplate,
   selectUsersTemplate,
 } from "./query-templates";
 import { User } from "./types";
@@ -34,4 +35,14 @@ export const getUsers = (
         resolve(results);
       }
     );
+  });
+
+export const getSingleUser = (id: string): Promise<User> =>
+  new Promise((resolve, reject) => {
+    connection.get(selectSingleUserTemplate, [id], (error, result) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(result as User);
+    });
   });

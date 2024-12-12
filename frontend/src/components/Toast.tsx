@@ -8,7 +8,6 @@ import {
   type TypeOptions,
 } from "react-toastify";
 
-
 interface ToastProps {
   message: string;
   type: TypeOptions;
@@ -28,13 +27,6 @@ const ToastUI: React.FC<ToastProps> = ({ message, type }) => {
     [ToastType.success]: "text-[#12B76A]",
     [ToastType.error]: "text-[#D92D20]",
   };
-  const stateIcon: any = {
-   
-    [ToastType.success]: (
-      <Image src="/success.svg" width={14.4} height={14.4} alt="" />
-    ),
-    [ToastType.default]: "",
-  };
 
   const headlineText = {
     [ToastType.info]: "",
@@ -53,10 +45,8 @@ const ToastUI: React.FC<ToastProps> = ({ message, type }) => {
       }`}
     >
       <div className="flex items-center gap-[10px] pr-[15px]">
-        {stateIcon[type]}
-
         <div>
-          <h6 className={`font-bold ${color[type]}`}>{headlineText[type]}</h6>
+          <h6 className={`font-medium ${color[type]}`}>{headlineText[type]}</h6>
           <p className="text-sm">{message}</p>
         </div>
       </div>

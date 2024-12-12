@@ -16,3 +16,9 @@ export const selectCountOfUsersTemplate = `
 SELECT COUNT(*) as count
 FROM users
 `;
+
+export const selectSingleUserTemplate = `
+SELECT *
+FROM users
+WHERE id = ?
+`;

@@ -28,19 +28,25 @@ export default function Home() {
               <th>Address</th>
             </tr>
           </thead>
-          {isLoading ? (
-            <tbody>
+          <tbody>
+            {isLoading ? (
               <td colSpan={3}>
                 <LoaderContainer />
               </td>
-            </tbody>
-          ) : (
-            <tbody>
-              {users?.map((i: UserData, idx: number) => (
+            ) : users.length === 0 ? (
+              <td colSpan={3}>
+                <div className="flex-center w-full mx-auto min-h-[400px] md:min-h-[600px] flex-col gap-2">
+                  <h3 className="text-2xl text-dark-700 font-medium">
+                    No user(s) found!
+                  </h3>
+                </div>
+              </td>
+            ) : (
+              users?.map((i: UserData, idx: number) => (
                 <UserTableRow user={i} key={idx} />
-              ))}
-            </tbody>
-          )}
+              ))
+            )}
+          </tbody>
         </table>
       </div>
       <Pagination
