@@ -48,11 +48,12 @@ const AddPostCard = () => {
         <div
           id="default-modal"
           tabIndex={-1}
-          aria-hidden="true"
+          // aria-hidden="true"
           className="overflow-y-auto p-5 overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex-center w-full md:inset-0 h-[calc(100%-1rem)] md:h-screen max-h-full bg-dark-500 bg-opacity-60"
           onClick={onClose}
         >
           <form
+            role="form"
             onClick={(e) => e.stopPropagation()}
             onSubmit={handleSubmit}
             className="relative p-5 md:p-6  w-full max-w-[679px] max-h-full bg-white rounded-lg shadow flex flex-col gap-6"
