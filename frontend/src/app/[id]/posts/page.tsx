@@ -7,6 +7,13 @@ import { LoaderContainer } from "@/components/Loader";
 import PostCard from "@/components/PostCard";
 import { useRouter, useParams } from "next/navigation";
 
+const PostsEmpty = () => (
+  <div className="flex-center w-full mx-auto min-h-[200px] flex-col gap-2">
+    <h3 className="text-2xl text-dark-700 font-medium">No post found!</h3>
+    <p>Create a new post with the Add button</p>
+  </div>
+);
+
 const Page = () => {
   const router = useRouter();
   const { id } = useParams();
@@ -47,14 +54,7 @@ const Page = () => {
               <PostCard key={idx} post={i} />
             ))}
           </div>
-          {posts && posts.length === 0 && (
-            <div className="flex-center w-full mx-auto min-h-[200px] flex-col gap-2">
-              <h3 className="text-2xl text-dark-700 font-medium">
-                No post found!
-              </h3>
-              <p>Create a new post with the Add button</p>
-            </div>
-          )}
+          {posts && posts.length === 0 && <PostsEmpty />}
         </>
       )}
     </main>

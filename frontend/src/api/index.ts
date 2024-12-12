@@ -2,7 +2,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Request } from "./request";
 import customToast, { ToastType } from "@/components/Toast";
 
-
 export const useGetUsers = ({ pageNumber, pageSize }: { pageNumber: number, pageSize: number }) =>
   useQuery({
     queryKey: ["getUsers", pageNumber, pageSize,],
@@ -56,7 +55,6 @@ export const useDeletePost = () => {
     mutationFn: (postId: string) =>
       Request.delete(`/posts/${postId}`),
     onSuccess: async (data: any) => {
-      console.log(data)
       customToast(data.message, ToastType.success)
     }
   })

@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import BtnOutline from "./BtnOutline";
 import Button from "./Button";
 import { PostData } from "@/api/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useDeletePost } from "@/api";
+import useDisclosure from "@/hooks/useDisclosure";
 
 const PostCard = ({ post }: { post: PostData }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const queryClient = useQueryClient();
-  console.log(post)
   const { isPending, mutate: deletePost } = useDeletePost();
   return (
     <>
       <div className="h-[230px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={onOpen}
           className="absolute p-2 flex-center right-2 top-2"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -33,7 +33,7 @@ const PostCard = ({ post }: { post: PostData }) => {
           tabIndex={-1}
           aria-hidden="true"
           className="overflow-y-auto p-5 overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex-center w-full md:inset-0 h-[calc(100%-1rem)] md:h-screen max-h-full bg-dark-500 bg-opacity-60"
-          onClick={() => setIsOpen(false)}
+          onClick={onClose}
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -44,7 +44,7 @@ const PostCard = ({ post }: { post: PostData }) => {
             </h5>
 
             <div className="flex-center gap-2">
-              <BtnOutline className="px-6" onClick={() => setIsOpen(false)}>
+              <BtnOutline className="px-6" onClick={onClose}>
                 No
               </BtnOutline>
               <Button
@@ -53,7 +53,7 @@ const PostCard = ({ post }: { post: PostData }) => {
                     onSuccess: () => {
                       // @ts-ignore
                       queryClient.refetchQueries(["getPosts"]);
-                      setIsOpen(false);
+                      onClose();
                     },
                   })
                 }

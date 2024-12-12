@@ -7,6 +7,14 @@ import Pagination from "@/components/Pagination";
 import UserTableRow from "@/components/UserTableRow";
 import { useState } from "react";
 
+const UsersEmpty = () => (
+  <td colSpan={3}>
+    <div className="flex-center w-full mx-auto min-h-[400px] md:min-h-[600px] flex-col gap-2">
+      <h3 className="text-2xl text-dark-700 font-medium">No user(s) found!</h3>
+    </div>
+  </td>
+);
+
 export default function Home() {
   const limit = 10;
   const [pageNumber, setPageNumber] = useState<number>(0);
@@ -34,13 +42,7 @@ export default function Home() {
                 <LoaderContainer />
               </td>
             ) : users.length === 0 ? (
-              <td colSpan={3}>
-                <div className="flex-center w-full mx-auto min-h-[400px] md:min-h-[600px] flex-col gap-2">
-                  <h3 className="text-2xl text-dark-700 font-medium">
-                    No user(s) found!
-                  </h3>
-                </div>
-              </td>
+              <UsersEmpty />
             ) : (
               users?.map((i: UserData, idx: number) => (
                 <UserTableRow user={i} key={idx} />

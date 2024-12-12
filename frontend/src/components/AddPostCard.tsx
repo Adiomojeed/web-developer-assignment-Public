@@ -6,11 +6,13 @@ import Button from "./Button";
 import { useCreatePost } from "@/api";
 import { useParams } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import useDisclosure from "@/hooks/useDisclosure";
 
 const AddPostCard = () => {
   const { id } = useParams();
   const queryClient = useQueryClient();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
 
@@ -23,7 +25,7 @@ const AddPostCard = () => {
         onSuccess: () => {
           // @ts-ignore
           queryClient.refetchQueries(["getPosts"]);
-          setIsOpen(false);
+          onClose();
           setTitle("");
           setBody("");
         },
@@ -33,7 +35,7 @@ const AddPostCard = () => {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={onOpen}
         className="h-[230px] md:h-[293px] rounded-lg border border-dashed border-[#D5D7DA] flex-center flex-col gap-2"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -48,7 +50,7 @@ const AddPostCard = () => {
           tabIndex={-1}
           aria-hidden="true"
           className="overflow-y-auto p-5 overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex-center w-full md:inset-0 h-[calc(100%-1rem)] md:h-screen max-h-full bg-dark-500 bg-opacity-60"
-          onClick={() => setIsOpen(false)}
+          onClick={onClose}
         >
           <form
             onClick={(e) => e.stopPropagation()}
@@ -73,7 +75,7 @@ const AddPostCard = () => {
               placeholder="Write something mind-blowing"
             />
             <div className="flex gap-2 justify-center ml-auto">
-              <BtnOutline onClick={() => setIsOpen(false)}>Cancel</BtnOutline>
+              <BtnOutline onClick={onClose}>Cancel</BtnOutline>
               <Button isLoading={isPending} type="submit">
                 Publish
               </Button>
