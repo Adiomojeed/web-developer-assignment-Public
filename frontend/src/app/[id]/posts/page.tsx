@@ -36,7 +36,7 @@ const Page = () => {
         <img src="/arrow-left.svg" alt="" /> Back to Users
       </button>
       {isLoading ?? isLoadingUser ? (
-        <LoaderContainer />
+        <LoaderContainer className="min-h-[400px] md:min-h-[500px]" />
       ) : (
         <>
           <h3 className="text-3xl my-4 lg:text-4xl text-dark-700 leading-[1.2em] font-medium">

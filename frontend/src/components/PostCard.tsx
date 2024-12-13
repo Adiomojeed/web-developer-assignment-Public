@@ -17,7 +17,7 @@ const PostCard = ({ post }: { post: PostData }) => {
       <div className="h-[210px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
         <button
           onClick={onOpen}
-          className="absolute p-2 flex-center right-2 top-2"
+          className="absolute p-2 flex-center right-1 top-1 md:right-2 md:top-2"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/trash.svg" alt="" />
