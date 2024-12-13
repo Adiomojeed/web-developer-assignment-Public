@@ -36,7 +36,7 @@ const AddPostCard = () => {
     <>
       <button
         onClick={onOpen}
-        className="h-[230px] md:h-[293px] rounded-lg border border-dashed border-[#D5D7DA] flex-center flex-col gap-2"
+        className="h-[210px] md:h-[293px] rounded-lg border border-dashed border-[#D5D7DA] flex-center flex-col gap-2"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/add.svg" alt="" />

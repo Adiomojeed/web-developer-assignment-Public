@@ -14,7 +14,7 @@ const PostCard = ({ post }: { post: PostData }) => {
   const { isPending, mutate: deletePost } = useDeletePost();
   return (
     <>
-      <div className="h-[230px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
+      <div className="h-[210px] md:h-[293px] shadow-sm rounded-lg border border-[#D5D7DA] p-4 md:p-6 relative">
         <button
           onClick={onOpen}
           className="absolute p-2 flex-center right-2 top-2"
@@ -22,8 +22,8 @@ const PostCard = ({ post }: { post: PostData }) => {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/trash.svg" alt="" />
         </button>
-        <h6 className="text-lg font-medium line-clamp-1">{post.title}</h6>
-        <small className="text-sm mt-2 md:mt-4 line-clamp-[8] md:line-clamp-[10] text-ellipsis">
+        <h6 className="sm:text-lg font-medium line-clamp-1">{post.title}</h6>
+        <small className="text-[13px] sm:text-sm mt-2 md:mt-4 line-clamp-[7] md:line-clamp-[10] text-ellipsis">
           {post.body}
         </small>
       </div>

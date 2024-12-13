@@ -22,6 +22,7 @@ const Page = () => {
   const { isLoading: isLoadingUser, data: sUser } = useGetSingleUser(
     id as string
   );
+
   const posts = data as unknown as PostData[];
   const user = sUser as unknown as UserData;
 
@@ -44,17 +45,17 @@ const Page = () => {
           <small className="text-sm">
             {user?.email} &bull;{" "}
             <span className="font-normal">
-              {posts.length ?? 0} Post{posts.length > 1 ? "s" : ""}
+              {posts?.length ?? 0} Post{posts?.length > 1 ? "s" : ""}
             </span>
           </small>
 
           <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
             <AddPostCard />
-            {posts.map((i: PostData, idx: number) => (
+            {posts?.map((i: PostData, idx: number) => (
               <PostCard key={idx} post={i} />
             ))}
           </div>
-          {posts && posts.length === 0 && <PostsEmpty />}
+          {posts && posts?.length === 0 && <PostsEmpty />}
         </>
       )}
     </main>

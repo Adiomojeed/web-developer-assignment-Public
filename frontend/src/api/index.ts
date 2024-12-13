@@ -1,12 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Request } from "./request";
 import customToast, { ToastType } from "@/components/Toast";
+import { PostData, UserData } from "./types";
 
 export const useGetUsers = ({ pageNumber, pageSize }: { pageNumber: number, pageSize: number }) =>
   useQuery({
     queryKey: ["getUsers", pageNumber, pageSize,],
     queryFn: () => {
-      return Request.get(`/users?pageNumber=${pageNumber}&pageSize=${pageSize}`).then(res => res)
+      return Request.get<UserData[]>(`/users?pageNumber=${pageNumber}&pageSize=${pageSize}`).then(res => res)
     },
   });
 
@@ -14,7 +15,7 @@ export const useGetSingleUser = (userId: string) =>
   useQuery({
     queryKey: ["getUser"],
     queryFn: () => {
-      return Request.get(`/users/${userId}`).then(res => res)
+      return Request.get<UserData>(`/users/${userId}`).then(res => res)
     },
   });
 
@@ -23,7 +24,7 @@ export const useGetTotalUsers = () =>
     queryKey: ["getCount"],
     queryFn: () => {
       // @ts-ignore
-      return Request.get(`/users/count`).then(res => res?.count)
+      return Request.get<number>(`/users/count`).then(res => res?.count)
 
     },
   });
@@ -32,7 +33,7 @@ export const useGetPosts = (userId: string) =>
   useQuery({
     queryKey: ["getPosts",],
     queryFn: () => {
-      return Request.get(`/posts?userId=${userId}`).then(res => res)
+      return Request.get<PostData[]>(`/posts?userId=${userId}`).then(res => res)
     },
   });
 

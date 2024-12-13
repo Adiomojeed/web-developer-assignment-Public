@@ -1,6 +1,3 @@
-/** @format */
-
-import Image from "next/image";
 import {
   toast,
   type ToastOptions,

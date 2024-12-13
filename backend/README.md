@@ -11,13 +11,19 @@ This is the backend server for the Web Developer Assignment, built with Node.js,
 
 ## Installation
 
-1. Install dependencies:
+1. Change directory to the backend directory:
+
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-2. Build the project:
+3. Build the project:
    ```bash
    npm run build
    ```
@@ -25,23 +31,27 @@ This is the backend server for the Web Developer Assignment, built with Node.js,
 
 ## Running the Server
 
-Start the server in production mode:
-
-```bash
-npm start
-```
-
 For development mode with hot reloading:
 
 ```bash
 npm run dev
 ```
 
+API is now running on [http://localhost:3001](http://localhost:3001). You can check with any API testing tool like Postman.
+
 For development mode without hot reloading (required by nodemon):
 
 ```bash
 npm run dev:once
 ```
+
+Start the server in production mode:
+
+```bash
+npm start
+```
+
+Production API runs at [https://web-developer-assignment-public-4p1f.onrender.com](https://web-developer-assignment-public-4p1f.onrender.com)
 
 ## Project Structure
 

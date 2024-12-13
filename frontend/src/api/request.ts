@@ -1,4 +1,3 @@
-/** @format */
 
 import axios, { type AxiosRequestConfig } from "axios";
 

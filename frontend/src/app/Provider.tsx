@@ -11,6 +11,7 @@ export const queryClient = new QueryClient({
   },
 });
 
+// This cobineds all the providers in the application into a file
 export default function ParentProvider({
   children,
 }: {

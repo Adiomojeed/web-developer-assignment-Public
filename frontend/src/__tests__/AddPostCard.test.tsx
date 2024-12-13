@@ -5,7 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import useDisclosure from "@/hooks/useDisclosure";
 import AddPostCard from "@/components/AddPostCard";
 
-// Mocking the hooks
+// Mocking all the hooks used in project
 jest.mock("next/navigation", () => ({
   useParams: jest.fn(),
 }));

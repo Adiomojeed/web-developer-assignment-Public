@@ -7,6 +7,7 @@ import Pagination from "@/components/Pagination";
 import UserTableRow from "@/components/UserTableRow";
 import { useState } from "react";
 
+// Empty state if no user is loaded from the db
 const UsersEmpty = () => (
   <td colSpan={3}>
     <div className="flex-center w-full mx-auto min-h-[400px] md:min-h-[600px] flex-col gap-2">
@@ -16,7 +17,7 @@ const UsersEmpty = () => (
 );
 
 export default function Home() {
-  const limit = 10;
+  const limit = 4;
   const [pageNumber, setPageNumber] = useState<number>(0);
   const { isLoading, data } = useGetUsers({ pageNumber, pageSize: limit });
   const { data: total } = useGetTotalUsers();
@@ -41,7 +42,7 @@ export default function Home() {
               <td colSpan={3}>
                 <LoaderContainer />
               </td>
-            ) : users.length === 0 ? (
+            ) : users?.length === 0 ? (
               <UsersEmpty />
             ) : (
               users?.map((i: UserData, idx: number) => (
