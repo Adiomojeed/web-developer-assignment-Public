@@ -13,7 +13,7 @@ const Loader = ({ className }: { className?: string }) => {
 
 export const LoaderContainer = () => {
   return (
-    <div className="flex-center w-full mx-auto min-h-[400px] md:min-h-[600px]">
+    <div className="flex-center w-full mx-auto min-h-[200px] md:min-h-[300px]">
       <Loader />
     </div>
   );
